@@ -1,1 +1,1 @@
-[{"id":"0001","discount":0.15,"isExpired":false}]
+[{"id":"0001","discount":0.15,"isExpired":false},{"id":"0002","discount":0.05,"isExpired":false},{"id":"0003","discount":0.10,"isExpired":true},{"id":"0004","discount":0.15,"isExpired":true},{"id":"0005","discount":0.20,"isExpired":false}]

@@ -12,7 +12,7 @@ class TestDiscount {
 	
 
 	@Test
-	void LoadDiscount() {
+	void getDiscount() {
 		
 		String id = "0001";
 		double discount = 0.15;
@@ -29,47 +29,40 @@ class TestDiscount {
 	}
 	
 	@Test
+	void getId() {
+		Discount discount1 = new Discount("0001", 0.10, false);
+		assertEquals(discount1.getDiscount(),0.10);
+	}
+	
+	@Test
+	void getIsExpired() {
+		Discount discount1 = new Discount("0001", 0.10, false);
+		assertFalse(discount1.getIsExpired());
+	}
+	
+	@Test
 	void equals() {
 		
-		String id = "0001";
-		double discount = 0.12;
-		boolean isExpired = false;
-		
-		Discount discount1 = new Discount(id, discount, isExpired);
-		Discount discount2 = new Discount("0001", 0.12, false);
+		Discount discount1 = new Discount("0001", 0.10, false);
+		Discount discount2 = new Discount("0001", 0.10, false);
 		
 		assertTrue(discount1.equals(discount2));
+		Discount discount3 = new Discount("0002", 0.10, false);
+		Discount discount4 = new Discount("0001", 0.11, false);
+		Discount discount5 = new Discount("0001", 0.10, true);
 		
-		Discount discount3 = new Discount("0001", 0.12, true);
-		assertFalse(discount2.equals(discount3));
+		assertFalse(discount1.equals(discount3));
+		assertFalse(discount1.equals(discount4));
+		assertFalse(discount1.equals(discount5));
 	
 	}
 	
-	
-	/*
 	@Test
-	void saveCart() {
-		LocalDateTime[] failedDiscounts = {LocalDateTime.now(), LocalDateTime.now().minusHours(1),
-				LocalDateTime.now().minusHours(2), LocalDateTime.now().minusHours(3), LocalDateTime.now().minusHours(4)};
-		State customerState = State.TEXAS;
-		ArrayList<String> items = new ArrayList<String>();
-		items.add("itemId1");
-		items.add("itemId2");
-		ArrayList<String> discounts = new ArrayList<String>();
-		discounts.add("discountId1");
-		discounts.add("discountId2");
-	
-		Cart carts = new Cart("UserId", failedDiscounts, customerState, items, discounts);
-		
-		File file = new File(filePath);
-		FileWriter wr = new FileWriter(file);
-		wr.write(gsonCart);
-		wr.flush();
-		wr.close();
-		
-		Cart.save(cart);
-		assertEquals("A","B");
+	void exists() {
+		assertTrue(Discount.exists("0001"));
+		assertFalse(Discount.exists("s"));
 	}
-	*/
+	
+	
 
 }

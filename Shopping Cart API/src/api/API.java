@@ -8,35 +8,66 @@ public class API {
 
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 	}
 	
-	
-	public static Response viewCart(String UserId) {
-		if(Cart.exists(UserId)) {
-			return Cart.getCart(UserId).viewCart();
+	/*
+	 * Creates CartResponse for Cart
+	 * 
+	 * Returns CartResponse
+	 */
+	public static Response viewCart(String userId) {
+		if(Cart.exists(userId)) {
+			return Cart.getCart(userId).viewCart();
 		} else {
 			ArrayList<String> error = new ArrayList<String>();
-			error.add("UserId " + UserId + " does not have a cart");
+			error.add("UserId " + userId + " does not have a cart");
 			return new Response(error);
 		}
 	}
 	
-	public static Response addItem(String UserId, String ItemId) {
-		if(Cart.exists(UserId)) {
-			return Cart.getCart(UserId).viewCart();
+	/*
+	 * Adds Item to cart
+	 * 
+	 * Returns Response
+	 */
+	public static Response addItem(String userId, String itemId) {
+		if(Cart.exists(userId)) {
+			return Cart.getCart(userId).addItem(itemId);
 		} else {
 			ArrayList<String> error = new ArrayList<String>();
+			error.add("UserId " + userId + " does not have a cart");
 			return new Response(error);
 		}
 	}
 	
-	public static Response applyDiscount(String UserId, String ItemId) {
-		return null;
+	/*
+	 * Adds Discount to cart
+	 * 
+	 * Returns Response
+	 */
+	public static Response applyDiscount(String userId, String discountID) {
+		if(Cart.exists(userId)) {
+			return Cart.getCart(userId).addDiscount(discountID);
+		} else {
+			ArrayList<String> error = new ArrayList<String>();
+			error.add("UserId " + userId + " does not have a cart");
+			return new Response(error);
+		}
 	}
 	
+	/*
+	 * Modifies Quantity of items in the cart
+	 * 
+	 * Returns Response
+	 */
 	public static Response modifyCart(String userId, HashMap<String,Integer> changes) {
-		return null;
+		if(Cart.exists(userId)) {
+			return Cart.getCart(userId).modifyCart(changes);
+		} else {
+			ArrayList<String> error = new ArrayList<String>();
+			error.add("UserId " + userId + " does not have a cart");
+			return new Response(error);
+		}
 	}
 	
 

@@ -52,6 +52,15 @@ public class ItemView {
 	}
 	
 	/*
+	 * Gets a copy of the ItemView of this Item
+	 * 
+	 * Returns ItemView
+	 */
+	public ItemView getItemView() {
+		return new ItemView(getId(), getName(), getDescription(), getPicture());
+	}
+	
+	/*
 	 * Checks if two ItemViews are equal
 	 * 
 	 * Returns True if equal and False if not

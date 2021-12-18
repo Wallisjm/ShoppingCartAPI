@@ -10,22 +10,33 @@ public class Response {
 		this.error = error;
 	}
 	
+	/*
+	 * Checks if a response has Errors
+	 * 
+	 * Returns true if there are error(s) and false if not
+	 */
 	public boolean hasError() {
-		if (error.isEmpty()) {
+		if (!error.isEmpty()) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 	
+	/*
+	 * Gets the list of errors
+	 * 
+	 * Returns Errors
+	 */
 	public ArrayList<String> getError() {
 		return error;
 	}	
 	
-	public String toString() {
-		return "Error: " + error.toString(); 
-	}
-	
+	/*
+	 * Checks if two Responses are equal
+	 * 
+	 * Returns true if equal otherwise false
+	 */
 	public boolean equals(Object obj) {
 		Response response;
 		if (obj instanceof Response) {
@@ -34,7 +45,7 @@ public class Response {
 			return false;
 		}
 		
-		if (!this.error.equals(response.error)) {
+		if (!this.getError().equals(response.getError())) {
 			return false;
 		}
 		

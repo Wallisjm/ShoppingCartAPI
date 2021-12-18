@@ -93,7 +93,6 @@ public class Item extends ItemView {
 				}
 			}
 			String gsonItem = new Gson().toJson(items);
-			System.out.println(gsonItem);
 			
 			FileWriter wr = new FileWriter(file);
 			wr.write(gsonItem);
@@ -121,15 +120,6 @@ public class Item extends ItemView {
 	 */
 	public double getPrice() {
 		return price;
-	}
-	
-	/*
-	 * Gets a copy of the ItemView of this Item
-	 * 
-	 * Returns ItemView
-	 */
-	public ItemView getItemView() {
-		return new ItemView(getId(), getName(), getDescription(), getPicture());
 	}
 	
 	

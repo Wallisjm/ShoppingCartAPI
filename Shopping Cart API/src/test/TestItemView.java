@@ -1,6 +1,7 @@
 package test;
 
 
+import api.Item;
 import api.ItemView;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,6 +32,14 @@ class TestItemView {
 	void getPicture() {
 		ItemView ItemView1 = new ItemView("0001", "Product 1", "First Product", "www.test.com/0001");
 		assertEquals(ItemView1.getPicture(), "www.test.com/0001");
+	}
+	
+	@Test
+	void getItemView() {
+		Item item1 = new Item("0001", "N1", "D1", 1, 2.50, "P1");
+		ItemView itemView = new ItemView("0001", "N1", "D1", "P1");
+		
+		assertTrue(item1.getItemView().equals(itemView));
 	}
 	
 	@Test
